@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "支持vue3的滚动加载插件",
-  "main": "dist/index.common.js",
+  "main": "dist/infinite-scroll.common.js",
   "types": "dist/lib/main.d.ts",
   "publisher": "",
   "repository": {
@@ -26,7 +26,8 @@
   "homepage": "https://github.com/kfhechenglong/vue3.0-infinite-scroll#readme",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name infinite-scroll src/main.ts",
+    "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --target lib --name infinite-scroll --dest lib examples/main.ts",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
