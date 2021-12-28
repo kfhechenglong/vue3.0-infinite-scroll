@@ -15,19 +15,15 @@ pnpm-debug.log*
 
 # Editor directories and files
 .idea
+.gitee
 .vscode
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-# 忽略目录
-examples/
-packages/
-public/
  
 # 忽略指定文件
-vue.config.js
 babel.config.js
 *.map
  

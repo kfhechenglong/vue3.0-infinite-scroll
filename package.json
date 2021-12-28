@@ -1,6 +1,6 @@
 {
   "name": "vue3.0-infinite-scroll",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "private": false,
   "description": "支持vue3的滚动加载插件",
   "main": "dist/infinite-scroll.common.js",
