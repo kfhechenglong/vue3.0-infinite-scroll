@@ -1,62 +1,57 @@
-# infinite-scroll
-
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # vue3.0-infinite-scroll
 
-#### 介绍
+## 介绍
 vue3.0无限滚动加载
+# Install
+```
+npm install vue3.0-infinite-scroll --save
+```
 
-#### 软件架构
-软件架构说明
+# API
 
+| 参数 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| infinite-scroll-throttle-delay | 滚动延迟 | number | 200 |  |
+| infinite-scroll-disabled | 是否禁止 | boolean | false |  |
+| infinite-scroll-distance | 滚动条距离底部的距离 | number | 0 |  |
+| infinite-scroll-immediate-check | 是否立即触发滚动 | boolean | true |  |
 
-#### 安装教程
+# 指令
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+| 指令名称 | 说明                 | 回调参数                | 版本 |
+| -------- | -------------------- | ----------------------- | ---- |
+| v-infinite-scroll    | 指令，执行滚动触发的事件 | () => void | -    |
 
 
-#### 特技
+## 使用示例
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### 注册指令
+
+```js
+app.use(Antd).use(router).use(vuex).use(infiniteScroll).mount('#app')
+```
+
+### 在组件中使用
+```html
+<div
+  class="poster-list-lis"
+  v-infinite-scroll="handleInfiniteOnLoad"
+  :infinite-scroll-immediate-check="false"
+  :infinite-scroll-disabled="scrollDisabled"
+  :infinite-scroll-distance="20">
+</div>
+```
+
+```js
+setup(props, context) {
+  const handleInfiniteOnLoad = () => {
+    // 异步加载数据等逻辑
+  }
+  const scrollDisabled = computed(() => props.renderDataList.length >= props.listCount)
+  return {
+    scrollDisabled,
+    handleInfiniteOnLoad
+  }
+}
+```

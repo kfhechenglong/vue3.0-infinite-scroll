@@ -1,6 +1,5 @@
 import { throttle } from "./uitls";
 import { Element } from "./interface";
-("use strict");
 const ctx = "vue3@InfiniteScroll";
 const getScrollTop = function (element: Element): number {
   if (element === window) {
@@ -67,8 +66,8 @@ const doBind = function doBind(context: any) {
   if (context.binded) return;
   context.binded = true;
 
-  const directive = context;
-  const element = directive.el;
+  const self = context;
+  const element = self.el;
 
   const throttleDelayExpr = element.getAttribute(
     "infinite-scroll-throttle-delay"
@@ -76,66 +75,61 @@ const doBind = function doBind(context: any) {
   let throttleDelay = 200;
   if (throttleDelayExpr) {
     throttleDelay = Number(
-      directive.vm[throttleDelayExpr] || throttleDelayExpr
+      self.vm[throttleDelayExpr] || throttleDelayExpr
     );
     if (isNaN(throttleDelay) || throttleDelay < 0) {
       throttleDelay = 200;
     }
   }
-  directive.throttleDelay = throttleDelay;
+  self.throttleDelay = throttleDelay;
 
-  directive.scrollEventTarget = getScrollEventTarget(element);
-  directive.scrollListener = throttle(
-    doCheck.bind(directive),
-    directive.throttleDelay
+  self.scrollEventTarget = getScrollEventTarget(element);
+  self.scrollListener = throttle(
+    doCheck,
+    self.throttleDelay,
+    self
   );
-  directive.scrollEventTarget.addEventListener(
+  self.scrollEventTarget.addEventListener(
     "scroll",
-    directive.scrollListener
+    self.scrollListener
   );
 
   const disabledExpr = element.getAttribute("infinite-scroll-disabled");
   let disabled = false;
   if (disabledExpr) {
     context.vm.$watch(disabledExpr, function (value: any) {
-      directive.disabled = value;
-      if (!value && directive.immediateCheck) {
-        doCheck(directive);
+      self.disabled = value;
+      if (!value && self.immediateCheck) {
+        doCheck(self);
       }
     });
-    disabled = Boolean(directive.vm[disabledExpr]);
+    disabled = Boolean(self.vm[disabledExpr]);
   }
-  directive.disabled = disabled;
+  self.disabled = disabled;
 
   const distanceExpr = element.getAttribute("infinite-scroll-distance");
   let distance = 0;
   if (distanceExpr) {
-    distance = Number(directive.vm[distanceExpr] || distanceExpr);
+    distance = Number(self.vm[distanceExpr] || distanceExpr);
     if (isNaN(distance)) {
       distance = 0;
     }
   }
-  directive.distance = distance;
+  self.distance = distance;
 
   const immediateCheckExpr = element.getAttribute(
     "infinite-scroll-immediate-check"
   );
   let immediateCheck = true;
   if (immediateCheckExpr) {
-    immediateCheck = Boolean(directive.vm[immediateCheckExpr]);
+    immediateCheck = Boolean(self.vm[immediateCheckExpr]);
   }
-  directive.immediateCheck = immediateCheck;
+  self.immediateCheck = immediateCheck;
 
   if (immediateCheck) {
-    doCheck(directive);
+    doCheck(self);
   }
 
-  const eventName = element.getAttribute("infinite-scroll-listen-for-event");
-  if (eventName) {
-    directive.vm.$on(eventName, function () {
-      doCheck(directive);
-    });
-  }
 };
 
 const doCheck = function doCheck(context: any, force?: boolean) {
@@ -143,7 +137,7 @@ const doCheck = function doCheck(context: any, force?: boolean) {
   const element = context.el;
   const distance = context.distance;
 
-  if (force !== true && context.disabled) return; //eslint-disable-line
+  if (force !== true && context.disabled) return;
   const viewportScrollTop = getScrollTop(scrollEventTarget);
   const viewportBottom =
     viewportScrollTop + getVisibleHeight(scrollEventTarget);
@@ -161,7 +155,6 @@ const doCheck = function doCheck(context: any, force?: boolean) {
 
     shouldTrigger = viewportBottom + distance >= elementBottom;
   }
-
   if (shouldTrigger && context.expression) {
     context.expression();
   }
@@ -173,7 +166,6 @@ const InfiniteScroll: any = {
     binding: { instance: any; value: any },
     vnode: any
   ) {
-    console.log(2222)
     el[ctx] = {
       el: el,
       vm: binding.instance,

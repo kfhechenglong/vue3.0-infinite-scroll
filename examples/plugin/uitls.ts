@@ -1,11 +1,10 @@
 type Time = number;
-export const throttle = function (fn: any, delay: Time) {
+export const throttle = function (fn: any, delay: Time, context: any) {
   let now: Time = 0;
   let lastExec: Time = 0;
   let timer: any = null;
-
   const execute = () => {
-    fn();
+    fn(context);
     lastExec = now;
   };
 
