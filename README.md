@@ -29,7 +29,7 @@ npm install vue3.0-infinite-scroll --save
 ### 注册指令
 
 ```js
-app.use(Antd).use(router).use(vuex).use(infiniteScroll).mount('#app')
+app.use(infiniteScroll).mount('#app')
 ```
 
 ### 在组件中使用
