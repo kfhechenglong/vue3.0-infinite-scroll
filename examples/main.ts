@@ -1,6 +1,5 @@
-
-import infiniteScroll from './plugin/infinite-scroll'
-export default {
-	// 以下是具体的组件列表
-  infiniteScroll
-}
+import { createApp } from 'vue'
+import App from './App.vue'
+// import './index.css'
+const app = createApp(App)
+app.mount('#app')
