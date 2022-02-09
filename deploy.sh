@@ -12,6 +12,7 @@ cd dist
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
 
+
 git init
 git config user.name "hechenglong"
 git config user.email "kfhechenglong@126.com"
