@@ -73,10 +73,8 @@ const doBind = function doBind(context: any) {
     "infinite-scroll-throttle-delay"
   );
   let throttleDelay = 200;
-  if (throttleDelayExpr) {
-    throttleDelay = Number(
-      self.vm[throttleDelayExpr] || throttleDelayExpr
-    );
+  if (throttleDelayExpr !== null && throttleDelayExpr !== undefined) {
+    throttleDelay = Number(throttleDelayExpr);
     if (isNaN(throttleDelay) || throttleDelay < 0) {
       throttleDelay = 200;
     }
@@ -93,36 +91,39 @@ const doBind = function doBind(context: any) {
     "scroll",
     self.scrollListener
   );
-
+    // disabled的值
   const disabledExpr = element.getAttribute("infinite-scroll-disabled");
   let disabled = false;
-  if (disabledExpr) {
-    context.vm.$watch(disabledExpr, function (value: any) {
+  // 要监听的值
+  const watchDisabledExpr = element.getAttribute("infinite-scroll-watch-disabled");
+  if (disabledExpr !== null && disabledExpr !== undefined) {
+    // 监听disabled值，如果为true则紧张滚动事件触发
+    context.vm.$watch(watchDisabledExpr, function (value: any) {
       self.disabled = value;
       if (!value && self.immediateCheck) {
         doCheck(self);
       }
     });
-    disabled = Boolean(self.vm[disabledExpr]);
+    disabled = disabledExpr === 'true';
   }
   self.disabled = disabled;
 
   const distanceExpr = element.getAttribute("infinite-scroll-distance");
   let distance = 0;
-  if (distanceExpr) {
-    distance = Number(self.vm[distanceExpr] || distanceExpr);
+  if (distanceExpr !== null && distanceExpr !== undefined) {
+    distance = Number(distanceExpr);
     if (isNaN(distance)) {
       distance = 0;
     }
   }
   self.distance = distance;
-
+// 检查是否立即执行
   const immediateCheckExpr = element.getAttribute(
     "infinite-scroll-immediate-check"
   );
   let immediateCheck = true;
-  if (immediateCheckExpr) {
-    immediateCheck = Boolean(self.vm[immediateCheckExpr]);
+  if (immediateCheckExpr !== null && immediateCheckExpr !== undefined) {
+    immediateCheck = Boolean(immediateCheckExpr);
   }
   self.immediateCheck = immediateCheck;
 
@@ -155,6 +156,7 @@ const doCheck = function doCheck(context: any, force?: boolean) {
 
     shouldTrigger = viewportBottom + distance >= elementBottom;
   }
+  // context.expression 为绑定的v-infinite-scroll
   if (shouldTrigger && context.expression) {
     context.expression();
   }

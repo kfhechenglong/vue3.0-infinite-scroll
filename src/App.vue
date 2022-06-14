@@ -1,15 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
+  <ListComp msg="Welcome to Your Vue.js + TypeScript + infiniteScroll App" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import ListComp from "./components/ListComp.vue";
 export default defineComponent({
   name: "App",
   components: {
-    HelloWorld,
+    ListComp,
   },
 });
 </script>
