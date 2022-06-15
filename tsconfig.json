@@ -12,7 +12,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "declaration": true,// 是否生成声明文件
-    "declarationDir": "lib",// 声明文件打包的位置
+    "declarationDir": "infiniteScroll/types",// 声明文件打包的位置
     "types": [
       "webpack-env"
     ],

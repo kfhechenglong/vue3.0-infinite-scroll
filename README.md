@@ -2,7 +2,9 @@
 # vue3.0-infinite-scroll
 
 ## 介绍
-vue3.0无限滚动加载
+vue3.0无限滚动加载插件
+
+### 演示地址>>>[demo](https://kfhechenglong.github.io/vue3.0-infinite-scroll/dist/index.html)
 # Install
 ```
 npm install vue3.0-infinite-scroll --save
@@ -27,23 +29,33 @@ npm install vue3.0-infinite-scroll --save
 
 ## 使用示例
 
-演示地址>>>[demo](https://kfhechenglong.github.io/vue3.0-infinite-scroll/dist/index.html)
-
 ### 注册指令
 
 ```js
+import infiniteScroll from 'vue3.0-infinite-scroll'
 app.use(infiniteScroll).mount('#app')
 ```
 
 ### 在组件中使用
 ```html
 <div
-  class="poster-list-lis"
+  class="list-lis"
   v-infinite-scroll="handleInfiniteOnLoad"
   :infinite-scroll-immediate-check="false"
   :infinite-scroll-disabled="scrollDisabled"
   infinite-scroll-watch-disabled="scrollDisabled"
   :infinite-scroll-distance="20">
+  <ul>
+    <li v-for="(item, index) in renderDataList" :key="index">
+      <a
+        :href="item.url"
+        target="_blank"
+        rel="noopener"
+        >{{index + 1}}、{{item.name}}</a
+      >
+    </li>
+    <div v-if="scrollDisabled">数据加载完毕</div>
+  </ul>
 </div>
 ```
 
@@ -62,6 +74,7 @@ setup(props, context) {
   const scrollDisabled = computed(() => renderDataList.length >= listCount)
   return {
     scrollDisabled,
+    renderDataList,
     handleInfiniteOnLoad
   }
 }
