@@ -1,10 +1,12 @@
 .DS_Store
 node_modules
 /dist
+public
+src
 
 
 # local env files
-.env.local
+.env.lib
 .env.*.local
 
 # Log files
@@ -25,5 +27,9 @@ pnpm-debug.log*
  
 # 忽略指定文件
 babel.config.js
+tsconfig.json
+babel.config.js
+.eslintrc.js
+.gitignore
 *.map
  

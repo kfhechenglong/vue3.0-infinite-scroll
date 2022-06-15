@@ -1,13 +1,13 @@
 
-# vue3.0-infinite-scroll
+# vue3-infinite-scroll-better
 
 ## 介绍
-vue3.0无限滚动加载插件
+支持Vue3的滚动加载插件，所有用法和vue-infinite-scroll一致。并解决了一些bug。
 
 ### 演示地址>>>[demo](https://kfhechenglong.github.io/vue3.0-infinite-scroll/dist/index.html)
 # Install
 ```
-npm install vue3.0-infinite-scroll --save
+npm install vue3-infinite-scroll-better --save
 ```
 
 # API
@@ -32,7 +32,7 @@ npm install vue3.0-infinite-scroll --save
 ### 注册指令
 
 ```js
-import infiniteScroll from 'vue3.0-infinite-scroll'
+import infiniteScroll from 'vue3-infinite-scroll-better'
 app.use(infiniteScroll).mount('#app')
 ```
 

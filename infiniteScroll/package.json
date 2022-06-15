@@ -1,10 +1,10 @@
 {
-  "name": "vue3.0-infinite-scroll",
-  "version": "2.0.0",
+  "name": "vue3-infinite-scroll-better",
+  "version": "2.1.2",
   "private": false,
-  "description": "支持Vue3的滚动加载插件",
-  "main": "index.js",
-  "types": "type/main.d.ts",
+  "description": "支持Vue3的滚动加载插件，所有用法和vue-infinite-scroll一致。并解决了一些bug。",
+  "main": "index.ts",
+  "types": "type/infiniteScroll/index.d.ts",
   "publisher": "",
   "repository": {
     "type": "git",
@@ -14,6 +14,8 @@
     "Vuejs",
     "Vue3",
     "Vue",
+    "vue3-infinite-scroll-better",
+    "vue3-infinite-scroll",
     "Vue3.0-infinite-scroll",
     "无限滚动加载",
     "infinite-scroll"
