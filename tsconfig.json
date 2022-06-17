@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./infiniteScroll" /* 指定编译后的输出目录 */,
     "target": "esnext",
     "module": "esnext",
     "strict": true,
@@ -29,6 +30,8 @@
     ]
   },
   "include": [
+    "plugins/lib/*.ts",
+    "plugins/index.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
