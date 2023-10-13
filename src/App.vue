@@ -1,6 +1,6 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-  <ListComp msg="Welcome to Your Vue.js + TypeScript + infiniteScroll App" />
+  <ListComp msg="支持Vue3的滚动加载插件" />
 </template>
 
 <script lang="ts">

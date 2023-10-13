@@ -2,10 +2,8 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br />
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener"
-        >vue-cli documentation</a
+      <a href="https://kfhechenglong.github.io/blog/" target="_blank" rel="noopener"
+        >点击查看更多前端知识文档</a
       >.
     </p>
     <h3>试着滚动下面列表</h3>
