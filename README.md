@@ -4,6 +4,12 @@
 ## 介绍
 支持Vue3的滚动加载插件，所有用法和vue-infinite-scroll一致。并解决了一些bug。
 
+<p align="center" style="padding:10px">
+  <a href="https://www.npmjs.com/package/vue3-infinite-scroll-better"><img src="https://img.shields.io/npm/dt/vue3-infinite-scroll-better?logo=npm"></a>
+	<a href="https://github/kfhechenglong/vue3.0-infinite-scroll.git"><img src="https://img.shields.io/github/stars/kfhechenglong/vue3.0-infinite-scroll"></a>
+	<a href="https://github/kfhechenglong/vue3.0-infinite-scroll.git"><img src="https://img.shields.io/github/forks/kfhechenglong/vue3.0-infinite-scroll"></a>
+</p>
+
 ### 演示地址>>>[demo](https://kfhechenglong.github.io/vue3.0-infinite-scroll/dist/index.html)
 # Install
 ```
